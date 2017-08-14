@@ -2,7 +2,7 @@ use Mix.Config
 
 # Repository specific configuration
 
-system = :nerves_system_rpi0
+system = :infinity_system_rpi0
 platform = "rpi0"
 arch = "arm"
 

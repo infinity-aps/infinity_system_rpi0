@@ -1,8 +1,5 @@
 # Raspberry Pi Zero Test Suite
 
-Executes ExUnit tests on target hardware and reports results to the
-[Nerves test server](https://nerves-test-server.herokuapp.com/nerves-project/nerves_system_rpi0)
-
 For more information on how to configure your own test farm please refer to the
 [Nerves test server source](https://github.com/mobileoverlord/nerves_test_server)
 

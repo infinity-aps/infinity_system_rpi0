@@ -1,7 +1,7 @@
 defmodule NervesSystemRpi0.Mixfile do
   use Mix.Project
 
-  @app :nerves_system_rpi0
+  @app :infinity_system_rpi0
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -35,7 +35,7 @@ defmodule NervesSystemRpi0.Mixfile do
     [
       type: :system,
       artifact_sites: [
-        {:github_releases, "nerves-project/#{@app}"}
+        {:github_releases, "infinity-aps/#{@app}"}
       ],
       platform: Nerves.System.BR,
       platform_config: [
@@ -63,7 +63,7 @@ defmodule NervesSystemRpi0.Mixfile do
 
   defp package do
     [
-      maintainers: ["Timothy Mecklem", "Frank Hunleth"],
+      maintainers: ["Timothy Mecklem"],
       files: package_files(),
       licenses: ["Apache 2.0"],
       links: %{"Github" => "https://github.com/nerves-project/#{@app}"}
