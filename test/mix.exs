@@ -35,7 +35,7 @@ defmodule Test.Mixfile do
   # Type "mix help deps" for more examples and options
   def deps do
     [
-      {:nerves_system_rpi0, path: "../", runtime: false},
+      {:infinity_system_rpi0, path: "../", runtime: false},
       {:nerves_system_test, github: "nerves-project/nerves_system_test"}
     ]
   end

@@ -26,9 +26,9 @@ env:
     - ELIXIR_VERSION=1.5.1
     - FWUP_VERSION=0.15.4
     - MIX_ENV=test
-    - NERVES_TARGET=rpi0
-    - CI_SYSTEM_NAME=nerves_system_$NERVES_TARGET
-    - REPO=nerves-project/$CI_SYSTEM_NAME
+    - NERVES_TARGET=infinity_rpi0
+    - CI_SYSTEM_NAME=infinity_system_rpi0
+    - REPO=infinity-aps/$CI_SYSTEM_NAME
     - NERVES_PACKAGE=`pwd`
     - NERVES_FW_VCS_IDENTIFIER=$TRAVIS_COMMIT
     - NERVES_FW_MISC=$TRAVIS_REPO_SLUG
@@ -59,8 +59,8 @@ before_deploy:
     - cd $NERVES_PACKAGE
     - $NERVES_PACKAGE/deps/nerves_system_br/scripts/ci-deploy.sh
     - mkdir -p fw/signed
-    - cp $NERVES_PACKAGE/test/_build/test/nerves/images/*.fw fw/$NERVES_FW_VCS_IDENTIFIER.fw
-    - fwup --sign --private-key $NERVES_FW_PRIV_KEY -i fw/$NERVES_FW_VCS_IDENTIFIER.fw -o fw/signed/$NERVES_FW_VCS_IDENTIFIER.fw
+#    - cp $NERVES_PACKAGE/test/_build/test/nerves/images/*.fw fw/$NERVES_FW_VCS_IDENTIFIER.fw
+#    - fwup --sign --private-key $NERVES_FW_PRIV_KEY -i fw/$NERVES_FW_VCS_IDENTIFIER.fw -o fw/signed/$NERVES_FW_VCS_IDENTIFIER.fw
 deploy:
   # Deploy tagged releases to GitHub
   - provider: releases
@@ -73,28 +73,6 @@ deploy:
     on:
       repo: $REPO
       tags: true
-  - provider: s3
-    access_key_id: $S3_ID
-    secret_access_key: $S3_KEY
-    bucket: $S3_BUCKET
-    skip_cleanup: true
-    local_dir: artifacts
-    upload-dir: test
-    acl: public_read
-    on:
-      repo: $REPO
-      all_branches: true
-  - provider: s3
-    access_key_id: $S3_ID
-    secret_access_key: $S3_KEY
-    bucket: $S3_BUCKET
-    skip_cleanup: true
-    local_dir: fw/signed
-    upload-dir: test_server/$REPO
-    acl: public_read
-    on:
-      repo: $REPO
-      all_branches: true
 
 # Display build log on failure
 after_failure:
