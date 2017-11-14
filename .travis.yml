@@ -48,9 +48,9 @@ script:
   - mix deps.get
   - mix archive.install https://github.com/nerves-project/archives/raw/master/nerves_bootstrap.ez --force
   - mix compile
-  - cd test
-  - mix deps.get
-  - mix firmware
+#  - cd test
+#  - mix deps.get
+#  - mix firmware
 
 # Deploy the build products
 before_deploy:
@@ -59,8 +59,8 @@ before_deploy:
     - cd $NERVES_PACKAGE
     - $NERVES_PACKAGE/deps/nerves_system_br/scripts/ci-deploy.sh
     - mkdir -p fw/signed
-    - cp $NERVES_PACKAGE/test/_build/test/nerves/images/*.fw fw/$NERVES_FW_VCS_IDENTIFIER.fw
-    - fwup --sign --private-key $NERVES_FW_PRIV_KEY -i fw/$NERVES_FW_VCS_IDENTIFIER.fw -o fw/signed/$NERVES_FW_VCS_IDENTIFIER.fw
+#    - cp $NERVES_PACKAGE/test/_build/test/nerves/images/*.fw fw/$NERVES_FW_VCS_IDENTIFIER.fw
+#    - fwup --sign --private-key $NERVES_FW_PRIV_KEY -i fw/$NERVES_FW_VCS_IDENTIFIER.fw -o fw/signed/$NERVES_FW_VCS_IDENTIFIER.fw
 deploy:
   # Deploy tagged releases to GitHub
   - provider: releases

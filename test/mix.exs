@@ -36,7 +36,7 @@ defmodule Test.Mixfile do
   def deps do
     [
       {:nerves, "~> 0.7", runtime: false},
-      {:nerves_system_rpi0, path: "../", runtime: false},
+      {:infinity_system_rpi0, path: "../", runtime: false},
       {:nerves_system_test, github: "mobileoverlord/nerves_system_test"}
       #{:nerves_system_test, path: "../../nerves_system_test"}
     ]
